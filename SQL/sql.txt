@@ -1,0 +1,14 @@
+# 1. SQL Query: Employees with salary > Adam's salary
+
+-- Method 1: Subquery
+SELECT name, salary 
+FROM employees 
+WHERE salary > (SELECT salary FROM employees WHERE name = 'Adam');
+
+-- Method 2: Self Join
+SELECT e1.name, e1.salary
+FROM employees e1
+JOIN employees e2 ON e2.name = 'Adam'
+WHERE e1.salary > e2.salary;
+
+
