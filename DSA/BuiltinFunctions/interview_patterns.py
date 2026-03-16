@@ -525,3 +525,10 @@ print(summary)
 print("=" * 80)
 print("🎯 MASTER THESE PATTERNS FOR INTERVIEWS!")
 print("=" * 80)
+
+
+t=(3,10,30,-10,2)
+
+tp = sorted(t)
+
+print(tuple(tp))
