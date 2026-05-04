@@ -1,0 +1,559 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary)}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:1.25rem;position:sticky;top:0;background:var(--color-background-primary);padding:8px 0;z-index:10;border-bottom:0.5px solid var(--color-border-tertiary)}
+.tab{font-size:11px;padding:5px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap}
+.tab:hover{background:var(--color-background-secondary)}
+.tab.active{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info);font-weight:500}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.1rem 1.25rem;margin-bottom:.85rem}
+h2{font-size:16px;font-weight:600;color:var(--color-text-primary);margin-bottom:.4rem}
+h3{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:.5rem}
+h4{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.35rem}
+p,li{font-size:13px;color:var(--color-text-secondary);line-height:1.75}
+ul{padding-left:1.2rem}
+pre{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.8rem 1rem;font-family:var(--font-mono);font-size:12px;line-height:1.9;overflow-x:auto;margin:.5rem 0}
+.insight{background:var(--color-background-warning);border-left:2px solid var(--color-border-warning);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:.6rem .9rem;font-size:13px;color:var(--color-text-warning);margin:.6rem 0}
+.success{background:var(--color-background-success);border-left:2px solid var(--color-border-success);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:.6rem .9rem;font-size:13px;color:var(--color-text-success);margin:.6rem 0}
+.danger{background:var(--color-background-danger);border-left:2px solid var(--color-border-danger);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:.6rem .9rem;font-size:13px;color:var(--color-text-danger);margin:.6rem 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:.5rem 0}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:.5rem 0}
+.box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);font-weight:500;margin:2px}
+.easy{background:var(--color-background-success);color:var(--color-text-success)}
+.med{background:var(--color-background-warning);color:var(--color-text-warning)}
+.hard{background:var(--color-background-danger);color:var(--color-text-danger)}
+.hot{background:var(--color-background-danger);color:var(--color-text-danger)}
+.info{background:var(--color-background-info);color:var(--color-text-info)}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:.5rem 0}
+td,th{padding:6px 8px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);text-align:left}
+th{font-weight:500;color:var(--color-text-primary)}
+.ask-btn{font-size:12px;padding:5px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-info);cursor:pointer;margin:3px}
+.done{color:var(--color-text-success);font-weight:500}
+.now{color:var(--color-text-warning);font-weight:500}
+.next{color:var(--color-text-tertiary)}
+.lc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.lc-row:last-child{border:none}
+.check{width:16px;height:16px;border-radius:3px;border:1px solid var(--color-border-secondary);display:inline-block;margin-right:6px;cursor:pointer;vertical-align:middle}
+.checked{background:var(--color-text-success);border-color:var(--color-text-success)}
+</style>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" onclick="show(0)">🗺 Roadmap</button>
+  <button class="tab" onclick="show(1)">🧠 Patterns</button>
+  <button class="tab" onclick="show(2)">📋 Cheatsheet</button>
+  <button class="tab" onclick="show(3)">🎯 LC Tracker</button>
+  <button class="tab" onclick="show(4)">🏢 Companies</button>
+  <button class="tab" onclick="show(5)">⚡ Quick Recall</button>
+</div>
+
+<div id="pages">
+
+<!-- PAGE 0: ROADMAP -->
+<div id="p0">
+  <div class="card">
+    <h2>Your personalised DSA roadmap — 5 years Python SDET</h2>
+    <p style="margin-bottom:.75rem">Based on your background and our sessions together. Green = done, amber = in progress, grey = upcoming.</p>
+    <table>
+      <tr><th>Week</th><th>Topic</th><th>Status</th><th>SDET Priority</th></tr>
+      <tr><td>1–3</td><td>Arrays — Two Pointers, N-Sum, Sliding Window, Prefix Sum, Kadane, Binary Search</td><td class="done">✅ Complete</td><td><span class="badge hot">🔥 Must</span></td></tr>
+      <tr><td>4</td><td>Strings — Basics, Two Pointers, Sliding Window, HashMap on Strings</td><td class="now">🔄 In Progress</td><td><span class="badge hot">🔥 Must</span></td></tr>
+      <tr><td>5</td><td>HashMap — all 8 patterns + LRU Cache</td><td class="now">🔄 In Progress</td><td><span class="badge hot">🔥 Must</span></td></tr>
+      <tr><td>6–7</td><td>Linked Lists — Reversal, Fast/Slow, Cycle, Palindrome</td><td class="next">📌 Next</td><td><span class="badge med">⚡ High</span></td></tr>
+      <tr><td>8</td><td>Stacks & Queues — Monotonic Stack, Valid Parens, BFS</td><td class="next">📌 Next</td><td><span class="badge med">⚡ High</span></td></tr>
+      <tr><td>9–10</td><td>Trees — DFS/BFS, BST, Height, LCA, Level Order</td><td class="next">📌 Next</td><td><span class="badge med">⚡ High</span></td></tr>
+      <tr><td>11</td><td>Graphs — DFS, BFS, Cycle detection</td><td class="next">📌 Next</td><td><span class="badge info">📌 Medium</span></td></tr>
+      <tr><td>12–13</td><td>Dynamic Programming — Memoization, Tabulation, Knapsack, LCS</td><td class="next">📌 Next</td><td><span class="badge info">📌 Medium</span></td></tr>
+    </table>
+    <div class="insight" style="margin-top:.75rem">As a 5-year Python SDET, your biggest gap is pattern recognition — not syntax. Focus 70% of your time on Arrays + Strings + HashMap + Trees. These 4 topics cover 80% of all SDET interview questions at MAANG.</div>
+  </div>
+
+  <div class="card">
+    <h3>What real SDET interviews look like at big tech</h3>
+    <div class="grid2">
+      <div class="box"><h4>Google SDET</h4><ul><li>2 DSA rounds (Medium-Hard)</li><li>1 System Design round</li><li>File system design (HashMap + Tree)</li><li>Interval merging problems</li><li>Strong focus on edge cases</li></ul></div>
+      <div class="box"><h4>Amazon SDET</h4><ul><li>2 DSA rounds (Easy-Medium)</li><li>1 System Design round</li><li>3-Sum, Trees, LinkedList palindrome</li><li>Next greater element (Stack)</li><li>Leadership Principles questions</li></ul></div>
+      <div class="box"><h4>Microsoft SDET</h4><ul><li>Focus on testability of code</li><li>Write test cases for every problem</li><li>HashMap + Graph problems</li><li>Design a testing framework</li><li>White-box vs black-box testing</li></ul></div>
+      <div class="box"><h4>Meta/Netflix SDET</h4><ul><li>Sliding Window heavy</li><li>Tree traversal problems</li><li>LRU Cache design</li><li>Automation framework design</li><li>Rate limiter design</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 1: PATTERNS -->
+<div id="p1" style="display:none">
+  <div class="card">
+    <h2>The 8 master patterns — recognise these instantly</h2>
+    <p style="margin-bottom:.75rem">Every DSA problem maps to one of these. Train your brain to ask "which pattern is this?" first.</p>
+
+    <div class="card" style="border-color:var(--color-border-info)">
+      <h3>Pattern 1: Two Pointers</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Sorted array, find pair/triplet, check palindrome, remove duplicates</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "sorted array", "pair that sums to", "reverse", "palindrome"</p>
+      <pre>left, right = 0, len(arr)-1
+while left < right:
+    if condition: return result
+    elif too_small: left += 1
+    else: right -= 1</pre>
+      <p><strong style="font-weight:500">Your solved problems:</strong> Two Sum II, Valid Palindrome, 3-Sum, Container with Most Water</p>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-success)">
+      <h3>Pattern 2: Sliding Window</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Subarray/substring problems, contiguous elements, find max/min/longest/shortest</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "subarray", "substring", "window", "contiguous", "longest", "shortest"</p>
+      <pre># Fixed window
+for i in range(len(arr)):
+    window.add(arr[i])
+    if i >= k: window.remove(arr[i-k])
+
+# Variable window
+left = 0
+for right in range(len(arr)):
+    # expand window
+    while invalid_condition:
+        # shrink window
+        left += 1
+    # record result</pre>
+      <p><strong style="font-weight:500">Your solved problems:</strong> Longest Substring No Repeat, Min Window Substring, Find Anagrams</p>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-warning)">
+      <h3>Pattern 3: HashMap / HashSet</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Frequency count, existence check, grouping, O(1) lookup needed</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "count", "frequency", "group", "find duplicate", "two sum"</p>
+      <pre>freq = {}
+for x in arr:
+    freq[x] = freq.get(x, 0) + 1
+# or: seen = set() for existence only</pre>
+      <p><strong style="font-weight:500">Your solved problems:</strong> Two Sum, Valid Anagram, Group Anagrams, LRU Cache, Subarray Sum=K</p>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-danger)">
+      <h3>Pattern 4: Fast + Slow Pointers</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Linked list cycle, find middle, kth from end</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "cycle", "middle of list", "loop", "meets"</p>
+      <pre>slow = fast = head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+    if slow == fast: return True  # cycle!</pre>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-info)">
+      <h3>Pattern 5: Binary Search</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Sorted array, find target, search space can be halved</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "sorted", "find minimum", "search", "rotated array"</p>
+      <pre>left, right = 0, len(arr)-1
+while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target: return mid
+    elif arr[mid] < target: left = mid + 1
+    else: right = mid - 1</pre>
+      <p><strong style="font-weight:500">Your solved problems:</strong> Binary Search, Search Rotated Array, Find Min in Rotated</p>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-success)">
+      <h3>Pattern 6: Stack / Monotonic Stack</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Next greater/smaller element, valid parentheses, temperature problems</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "next greater", "valid brackets", "temperature", "buildings"</p>
+      <pre>stack = []
+for i, val in enumerate(arr):
+    while stack and arr[stack[-1]] < val:
+        idx = stack.pop()
+        result[idx] = val   # next greater found!
+    stack.append(i)</pre>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-warning)">
+      <h3>Pattern 7: Tree DFS / BFS</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Tree/graph traversal, level order, path sum, height</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "tree", "level", "path", "height", "depth", "ancestor"</p>
+      <pre># DFS — recursive
+def dfs(node):
+    if not node: return 0
+    left = dfs(node.left)
+    right = dfs(node.right)
+    return 1 + max(left, right)
+
+# BFS — level order
+from collections import deque
+queue = deque([root])
+while queue:
+    node = queue.popleft()
+    if node.left: queue.append(node.left)
+    if node.right: queue.append(node.right)</pre>
+    </div>
+
+    <div class="card" style="border-color:var(--color-border-danger)">
+      <h3>Pattern 8: Dynamic Programming</h3>
+      <p><strong style="font-weight:500">When to use:</strong> Optimisation, count ways, overlapping subproblems</p>
+      <p><strong style="font-weight:500">Signal words:</strong> "max/min", "count ways", "can you reach", "longest subsequence"</p>
+      <pre># Memoization top-down
+from functools import lru_cache
+@lru_cache(maxsize=None)
+def dp(i): return dp(i-1) + dp(i-2)
+
+# Tabulation bottom-up
+dp = [0] * (n+1)
+dp[0], dp[1] = 0, 1
+for i in range(2, n+1):
+    dp[i] = dp[i-1] + dp[i-2]</pre>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: CHEATSHEET -->
+<div id="p2" style="display:none">
+  <div class="card">
+    <h2>Python DSA cheatsheet — everything in one place</h2>
+    <h3 style="margin-top:.5rem">Complexity quick reference</h3>
+    <table>
+      <tr><th>Structure</th><th>Access</th><th>Search</th><th>Insert</th><th>Delete</th></tr>
+      <tr><td>Array/List</td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(n)</td></tr>
+      <tr><td>HashMap/dict</td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>HashSet/set</td><td>—</td><td>O(1)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>Linked List</td><td>O(n)</td><td>O(n)</td><td>O(1)*</td><td>O(1)*</td></tr>
+      <tr><td>Stack (list)</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>Queue (deque)</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>O(1)</td></tr>
+      <tr><td>Binary Search</td><td>—</td><td>O(log n)</td><td>—</td><td>—</td></tr>
+      <tr><td>BST (balanced)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td><td>O(log n)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Python one-liners interviewers love to see</h3>
+    <pre># Reverse a list / string
+arr[::-1]
+s[::-1]
+
+# Sort with key
+arr.sort(key=lambda x: x[1])  # sort by second element
+sorted(words, key=len)         # sort by length
+
+# Flatten nested list
+flat = [x for row in matrix for x in row]
+
+# Counter — most common
+from collections import Counter
+Counter(arr).most_common(3)    # top 3 frequent
+
+# DefaultDict
+from collections import defaultdict
+d = defaultdict(list)          # default is empty list
+
+# Deque — O(1) both ends
+from collections import deque
+q = deque()
+q.appendleft(x)  # push left O(1)
+q.popleft()      # pop left  O(1)
+
+# Heap (min-heap)
+import heapq
+heapq.heappush(heap, val)
+heapq.heappop(heap)            # always pops smallest
+
+# Max-heap trick (negate values)
+heapq.heappush(heap, -val)
+
+# Prefix sum
+prefix = [0] * (len(arr)+1)
+for i, v in enumerate(arr):
+    prefix[i+1] = prefix[i] + v
+# sum(arr[i:j]) = prefix[j] - prefix[i]
+
+# Binary search built-in
+import bisect
+bisect.bisect_left(arr, target)  # insertion point</pre>
+  </div>
+
+  <div class="card">
+    <h3>Pattern recognition trigger words — memorise this table</h3>
+    <table>
+      <tr><th>If you see this in the problem...</th><th>Use this pattern</th></tr>
+      <tr><td>"sorted array", "find pair"</td><td>Two Pointers</td></tr>
+      <tr><td>"subarray", "substring", "window", "contiguous"</td><td>Sliding Window</td></tr>
+      <tr><td>"frequency", "count", "group", "duplicate"</td><td>HashMap</td></tr>
+      <tr><td>"linked list", "cycle", "middle"</td><td>Fast + Slow Pointers</td></tr>
+      <tr><td>"sorted", "search", "find minimum"</td><td>Binary Search</td></tr>
+      <tr><td>"next greater", "parentheses", "brackets"</td><td>Stack</td></tr>
+      <tr><td>"tree", "graph", "level", "path"</td><td>DFS / BFS</td></tr>
+      <tr><td>"max/min ways", "can reach", "longest subsequence"</td><td>Dynamic Programming</td></tr>
+      <tr><td>"merge intervals", "overlapping"</td><td>Sort + Greedy</td></tr>
+      <tr><td>"top K", "K largest/smallest"</td><td>Heap</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>SDET-specific: always say these in interviews</h3>
+    <pre># 1. Clarify constraints first
+"What is the size of input? Can it be empty? Are there duplicates?"
+
+# 2. State your approach before coding
+"I'll use a sliding window here because we need a contiguous subarray."
+
+# 3. Always mention complexity
+"This runs in O(n) time and O(n) space due to the HashMap."
+
+# 4. Mention edge cases proactively
+"I'll handle empty input, single element, and all-same-element cases."
+
+# 5. Write test cases (SDET superpower)
+assert solution([]) == 0          # empty
+assert solution([1]) == 1         # single element
+assert solution([1,1,1]) == 1     # all same</pre>
+  </div>
+</div>
+
+<!-- PAGE 3: LC TRACKER -->
+<div id="p3" style="display:none">
+  <div class="card">
+    <h2>Your personal LeetCode tracker — Blind 75 for SDET</h2>
+    <p style="margin-bottom:.75rem">Curated from Blind 75 + real SDET interview reports from Google, Amazon, Microsoft. Tap checkbox to mark done.</p>
+    <div class="success">Target: Complete all Easy + Medium before interviews. Hard = bonus points.</div>
+  </div>
+
+  <div class="card">
+    <h3>🔥 Arrays & Sliding Window (your strongest area)</h3>
+    ${[
+      ['LC 1','Two Sum','easy',true],
+      ['LC 121','Best Time to Buy Stock','easy',true],
+      ['LC 238','Product of Array Except Self','medium',true],
+      ['LC 53','Maximum Subarray (Kadane)','medium',true],
+      ['LC 3','Longest Substring No Repeat','medium',true],
+      ['LC 76','Min Window Substring','hard',false],
+      ['LC 438','Find All Anagrams','medium',false],
+      ['LC 56','Merge Intervals','medium',false],
+      ['LC 57','Insert Interval','medium',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <h3>🗂 HashMap & Strings</h3>
+    ${[
+      ['LC 242','Valid Anagram','easy',false],
+      ['LC 387','First Unique Char','easy',false],
+      ['LC 49','Group Anagrams','medium',false],
+      ['LC 560','Subarray Sum = K','medium',false],
+      ['LC 146','LRU Cache','medium',false],
+      ['LC 424','Longest Repeating Char Replace','medium',false],
+      ['LC 567','Permutation in String','medium',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <h3>🔗 Linked Lists</h3>
+    ${[
+      ['LC 206','Reverse Linked List','easy',false],
+      ['LC 21','Merge Two Sorted Lists','easy',false],
+      ['LC 876','Middle of Linked List','easy',false],
+      ['LC 141','Linked List Cycle','easy',false],
+      ['LC 19','Remove Nth Node From End','medium',false],
+      ['LC 234','Palindrome Linked List','easy',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <h3>🥞 Stacks & Queues</h3>
+    ${[
+      ['LC 20','Valid Parentheses','easy',false],
+      ['LC 496','Next Greater Element I','easy',false],
+      ['LC 739','Daily Temperatures','medium',false],
+      ['LC 155','Min Stack','medium',false],
+      ['LC 150','Evaluate Reverse Polish Notation','medium',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <h3>🌳 Trees</h3>
+    ${[
+      ['LC 104','Max Depth of Binary Tree','easy',false],
+      ['LC 226','Invert Binary Tree','easy',false],
+      ['LC 100','Same Tree','easy',false],
+      ['LC 102','Binary Tree Level Order','medium',false],
+      ['LC 235','LCA of BST','medium',false],
+      ['LC 98','Validate BST','medium',false],
+      ['LC 543','Diameter of Binary Tree','easy',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+
+  <div class="card">
+    <h3>⚡ Dynamic Programming</h3>
+    ${[
+      ['LC 70','Climbing Stairs','easy',false],
+      ['LC 198','House Robber','medium',false],
+      ['LC 300','Longest Increasing Subsequence','medium',false],
+      ['LC 322','Coin Change','medium',false],
+      ['LC 1143','Longest Common Subsequence','medium',false],
+    ].map(([lc,name,diff,done])=>`
+    <div class="lc-row">
+      <div><span class="check ${done?'checked':''}" onclick="this.classList.toggle('checked')"></span><strong style="font-weight:500">${lc}</strong> — ${name}</div>
+      <span class="badge ${diff==='easy'?'easy':diff==='medium'?'med':'hard'}">${diff}</span>
+    </div>`).join('')}
+  </div>
+</div>
+
+<!-- PAGE 4: COMPANIES -->
+<div id="p4" style="display:none">
+  <div class="card">
+    <h2>Company-wise SDET interview breakdown</h2>
+    <div class="insight">Source: Real interview experiences from GeeksforGeeks, Glassdoor, and LeetCode Discuss — cross-referenced May 2026.</div>
+  </div>
+
+  <div class="card">
+    <h3>Amazon SDET — actual questions asked</h3>
+    <ul>
+      <li>3-Sum (3 elements adding to target) — Telephonic Round 1</li>
+      <li>Nearest perfect square using modified binary search</li>
+      <li>Check if two binary trees are mirrors</li>
+      <li>Next greater element using stack — F2F Round 1</li>
+      <li>Linked list palindrome check — F2F Round 2</li>
+      <li>Write stress test cases for a Furniture class</li>
+      <li>System design: book download manager with progress tracking</li>
+    </ul>
+    <div class="success" style="margin-top:.5rem">Key insight: Amazon expects you to write test cases for your own DSA solution. This is the SDET edge — always say "let me also write test cases for this."</div>
+  </div>
+
+  <div class="card">
+    <h3>Google SDET — actual questions asked</h3>
+    <ul>
+      <li>Design a File System using HashMap (LC 1166)</li>
+      <li>Merge Intervals (LC 56) + follow-up: streaming intervals</li>
+      <li>Calendar booking — max overlapping events (TreeMap)</li>
+      <li>Insert Interval (LC 57)</li>
+      <li>Counter questions on trade-offs and edge cases</li>
+      <li>System design: in-memory file system with ls, mkdir, read</li>
+    </ul>
+    <div class="success" style="margin-top:.5rem">Key insight: Google promotes "Hire" to "Strong Hire" when you discuss trade-offs and edge cases. Always say "an edge case here is..."</div>
+  </div>
+
+  <div class="card">
+    <h3>Microsoft SDET — focus areas</h3>
+    <ul>
+      <li>Heavy focus on testability — "how would you test this code?"</li>
+      <li>HashMap + Graph problems</li>
+      <li>Design a testing framework for a given system</li>
+      <li>White-box vs black-box testing discussion</li>
+      <li>Valid Parentheses and Stack problems</li>
+      <li>Tree traversal — inorder, preorder, level-order</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Topics by interview frequency — big tech SDET 2025</h3>
+    <table>
+      <tr><th>Topic</th><th>Frequency</th><th>Companies</th></tr>
+      <tr><td>Arrays + Sliding Window</td><td><span class="badge hot">Very High</span></td><td>Amazon, Google, Meta</td></tr>
+      <tr><td>HashMap + Hashing</td><td><span class="badge hot">Very High</span></td><td>All companies</td></tr>
+      <tr><td>Trees (DFS/BFS)</td><td><span class="badge hot">Very High</span></td><td>Amazon, Google, Microsoft</td></tr>
+      <tr><td>Linked Lists</td><td><span class="badge med">High</span></td><td>Amazon, Microsoft</td></tr>
+      <tr><td>Stacks & Queues</td><td><span class="badge med">High</span></td><td>Amazon, Google</td></tr>
+      <tr><td>Binary Search</td><td><span class="badge med">High</span></td><td>Google, Amazon</td></tr>
+      <tr><td>Dynamic Programming</td><td><span class="badge info">Medium</span></td><td>Google, Meta</td></tr>
+      <tr><td>Graphs</td><td><span class="badge info">Medium</span></td><td>Google, Meta</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 5: QUICK RECALL -->
+<div id="p5" style="display:none">
+  <div class="card">
+    <h2>5-minute interview warm-up — read this before every interview</h2>
+  </div>
+
+  <div class="card">
+    <h3>The SDET interview formula — say this structure every time</h3>
+    <pre>Step 1 — UNDERSTAND  (2 min)
+  "Let me restate the problem. We have X and need to return Y."
+  "Can input be empty? Negative numbers? Duplicates?"
+
+Step 2 — PATTERN     (1 min)
+  "I see [signal word] so this is a [pattern] problem."
+  "I'll use [data structure] because [reason]."
+
+Step 3 — APPROACH    (2 min)
+  Explain brute force first, then optimal.
+  "Brute force is O(n²). I can do better with..."
+
+Step 4 — CODE        (15 min)
+  Talk while you code. Say what each line does.
+
+Step 5 — TEST        (5 min)  ← YOUR SDET SUPERPOWER
+  "Let me test with: normal case, empty input, single element, edge case."
+  Write assert statements. Dry run on example.
+
+Step 6 — COMPLEXITY  (1 min)
+  "Time: O(n) because... Space: O(n) because..."</pre>
+  </div>
+
+  <div class="card">
+    <h3>Key things learned from our sessions together</h3>
+    <div class="grid2">
+      <div class="box"><h4>Two Pointers trick</h4><p>Sort first if not sorted. Move left when sum too small, right when too large. For palindrome: skip non-alphanumeric.</p></div>
+      <div class="box"><h4>Sliding Window rule</h4><p>Expand with right pointer. Shrink from left when window is invalid. Record result AFTER while loop exits.</p></div>
+      <div class="box"><h4>HashMap golden rule</h4><p>Always use .get(key, 0) not direct access. Store complement AFTER checking. Delete zero keys to keep dict clean.</p></div>
+      <div class="box"><h4>formed == required</h4><p>In Min Window Substring, only record/shrink when window is valid. This is the hardest pattern — you cracked it!</p></div>
+      <div class="box"><h4>Linked list survival</h4><p>Never lose head pointer. curr.next = curr.next.next skips a node. Use dummy head to simplify edge cases.</p></div>
+      <div class="box"><h4>Binary search rule</h4><p>left <= right for exact search. left < right for range search. mid = left + (right-left)//2 avoids overflow.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Free resources for everything we covered</h3>
+    <table>
+      <tr><th>Resource</th><th>Best for</th><th>Link/Search</th></tr>
+      <tr><td>NeetCode.io</td><td>All patterns with videos</td><td>neetcode.io/roadmap</td></tr>
+      <tr><td>Striver's A-Z Sheet</td><td>Structured problem list</td><td>Search "Striver DSA sheet"</td></tr>
+      <tr><td>Blind 75</td><td>Minimal high-impact set</td><td>Search "Blind 75 LeetCode"</td></tr>
+      <tr><td>NeetCode YouTube</td><td>Visual explanations</td><td>youtube: NeetCode</td></tr>
+      <tr><td>Abdul Bari YouTube</td><td>Deep concepts</td><td>youtube: Abdul Bari DSA</td></tr>
+      <tr><td>Striver YouTube</td><td>Hindi, interview focused</td><td>youtube: TakeUForward</td></tr>
+      <tr><td>GeeksforGeeks</td><td>Company-wise questions</td><td>gfg.org/must-coding-qs</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Your 4-week sprint plan to be interview-ready</h3>
+    <table>
+      <tr><th>Week</th><th>Daily (1hr)</th><th>Target</th></tr>
+      <tr><td>Week 1</td><td>Finish HashMap LCs + Start Linked Lists</td><td>LC 1,242,387,49,560,146 + LL basics</td></tr>
+      <tr><td>Week 2</td><td>Stacks + Trees basics</td><td>LC 20,739,104,226,102,98</td></tr>
+      <tr><td>Week 3</td><td>Mixed practice (2 problems/day)</td><td>LC 56,57,300,322,70,198</td></tr>
+      <tr><td>Week 4</td><td>Mock interviews + revision</td><td>Full dry-runs, edge cases, complexity</td></tr>
+    </table>
+    <div class="insight" style="margin-top:.75rem">1 hour a day is enough. Consistency beats intensity. Code every problem from memory — never copy-paste.</div>
+    <div style="margin-top:1rem">
+      <button class="ask-btn" onclick="sendPrompt('Start teaching me Stacks and Queues from basics')">Start Stacks & Queues ↗</button>
+      <button class="ask-btn" onclick="sendPrompt('Give me a mock interview question right now')">Mock interview me ↗</button>
+      <button class="ask-btn" onclick="sendPrompt('Teach me Trees from basics with real life examples')">Start Trees ↗</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(i){
+  document.querySelectorAll('#pages > div').forEach((p,j)=>p.style.display=j===i?'block':'none');
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+}
+</script>
